@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f5f0" />
+    <meta name="description" content="생각을 모으고, 필요할 때 빠르게 찾는 나만의 노트." />
+    <link rel="icon" type="image/svg+xml" href="icon.svg" />
+    <title>모아 | 나만의 노트</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="auth-screen" id="authScreen">
+      <section class="auth-card" aria-labelledby="authHeading">
+        <a class="auth-brand" href="#" aria-label="모아"><img src="icon.svg" alt=""/><span>모아</span></a>
+        <div class="auth-eyebrow"><span></span> YOUR PRIVATE NOTE SPACE</div>
+        <h1 id="authHeading">다시 반가워요<span>.</span></h1>
+        <p class="auth-description" id="authDescription">로그인하고 어디서든 내 노트를 이어서 살펴보세요.</p>
+        <form id="authForm" class="auth-form">
+          <label for="authEmail">이메일</label>
+          <input id="authEmail" name="email" type="email" maxlength="254" autocomplete="email" required placeholder="이메일 주소를 입력하세요" />
+          <label for="authPassword">비밀번호</label>
+          <input id="authPassword" name="password" type="password" minlength="6" maxlength="128" autocomplete="current-password" required placeholder="6자 이상 입력하세요" />
+          <p class="auth-error" id="authError" role="alert" hidden></p>
+          <button class="auth-submit" id="authSubmit" type="submit">로그인</button>
+        </form>
+        <div class="auth-switch"><span id="authSwitchText">아직 계정이 없으신가요?</span><button id="authModeButton" type="button">회원가입</button></div>
+        <div class="auth-footnote"><span class="auth-lock" aria-hidden="true">◇</span> 계정마다 노트가 분리되어 저장됩니다.</div>
+      </section>
+    </main>
+
+    <div class="app-shell" id="appShell" hidden>
+      <aside class="sidebar">
+        <a class="brand" href="#" aria-label="모아 홈"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M8 23V10l8 7 8-7v13M16 17v6"/></svg></span><span>모아</span></a>
+        <div class="side-label">워크스페이스</div>
+        <button class="nav-item active" id="allNotesButton"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 9h6M9 13h6M9 17h4"/></svg></span>모든 노트<span class="nav-count" id="noteCount">0</span></button>
+        <button class="nav-item" id="favoritesButton"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 20-1.4-1.3C5.6 14.1 2.5 11.3 2.5 7.8A5.1 5.1 0 0 1 7.7 2.5c1.7 0 3.3.8 4.3 2.1a5.6 5.6 0 0 1 4.3-2.1 5.1 5.1 0 0 1 5.2 5.3c0 3.5-3.1 6.3-8.1 10.9L12 20Z"/></svg></span>즐겨찾기</button>
+        <div class="side-bottom"><div class="profile"><div class="avatar">나</div><div><strong>내 노트</strong><small>모아 노트</small></div><span class="dots">•••</span></div></div>
+      </aside>
+
+      <main class="main-area">
+        <header class="topbar">
+          <div class="breadcrumbs"><span>워크스페이스</span><span class="slash">/</span><strong id="viewLabel">모든 노트</strong></div>
+          <div class="top-actions"><span class="save-status" id="saveStatus"><i></i> 로그인 필요</span><span class="logged-in-name" id="loggedInName"></span><button class="logout-button" id="logoutButton">로그아웃</button><button class="icon-button theme-icon" id="themeButton" aria-label="테마 전환" title="테마 전환"><svg viewBox="0 0 24 24"><path d="M20.2 15.5A8.5 8.5 0 0 1 8.5 3.8 8.5 8.5 0 1 0 20.2 15.5Z"/></svg></button><div class="avatar small-avatar">나</div></div>
+        </header>
+
+        <section class="content">
+          <div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> YOUR THOUGHTS, IN ONE PLACE</div><h1 id="heading">모든 노트<span class="heading-period">.</span></h1><p>생각을 모아두면, 필요한 순간에 다시 만날 수 있어요.</p></div><button class="new-note-button" id="newNoteButton"><span class="plus-icon" aria-hidden="true">+</span> 새 노트</button></div>
+
+          <div class="toolbar"><label class="search-box"><span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg></span><input id="searchInput" type="search" placeholder="노트에서 검색..." autocomplete="off" aria-label="노트 검색"/><kbd>Ctrl K</kbd><button class="clear-search" id="clearSearch" aria-label="검색어 지우기" hidden>×</button></label><div class="sort-wrap"><span class="sort-label">정렬</span><select id="sortSelect" aria-label="노트 정렬"><option value="updated">최근 수정순</option><option value="created">최신 작성순</option><option value="title">제목순</option></select></div></div>
+          <div class="results-line"><span id="resultsSummary">노트</span><button id="clearFilters" class="text-button" hidden>검색 지우기</button></div>
+          <div class="notes-grid" id="notesGrid" aria-live="polite"></div>
+          <div class="empty-state" id="emptyState" hidden><div class="empty-illustration" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M20 10h25a5 5 0 0 1 5 5v35a4 4 0 0 1-4 4H18a4 4 0 0 1-4-4V16a6 6 0 0 1 6-6Z"/><path d="M23 23h17M23 31h17M23 39h10"/><circle cx="44" cy="43" r="9"/><path d="m50.5 49.5 5 5"/></svg></div><h2 id="emptyTitle">아직 노트가 없어요</h2><p id="emptyMessage">첫 번째 생각을 기록해 보세요.</p><button class="new-note-button" id="emptyAction">＋ 새 노트 만들기</button></div>
+          <footer class="page-footer"><span>작은 생각도 놓치지 않도록.</span><span>모아 <i>✳</i></span></footer>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal-backdrop" id="editorBackdrop" hidden>
+        <section class="editor-modal" role="dialog" aria-modal="true" aria-labelledby="titleInput">
+        <div class="editor-top"><span class="editor-kicker">모아 노트</span><button class="icon-button close-button" id="closeEditor" aria-label="닫기">×</button></div>
+        <input class="title-input" id="titleInput" placeholder="제목 없는 노트" maxlength="120" aria-label="노트 제목" />
+        <div class="editor-meta"><span id="editorDate"></span><span class="editor-dot">•</span><span>저장 버튼을 눌러 저장</span></div>
+        <textarea class="body-input" id="bodyInput" placeholder="여기에 생각을 적어보세요..." aria-label="노트 내용"></textarea>
+        <div class="editor-footer"><span>저장 위치는 위 상태 표시에서 확인할 수 있어요.</span><button class="delete-button" id="deleteNoteButton" hidden>노트 삭제</button><button class="done-button" id="doneButton">저장</button></div>
+      </section>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

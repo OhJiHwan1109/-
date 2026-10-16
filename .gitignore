@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+.env.*
+!*.example
+supabase-config.js
+data/notes.json
+data/users.json
+data/*.tmp

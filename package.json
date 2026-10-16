@@ -1,0 +1,19 @@
+{
+  "name": "moa-notes",
+  "version": "1.0.0",
+  "private": true,
+  "description": "모아 노트 앱 - Supabase 계정과 클라우드 동기화 노트",
+  "scripts": {
+    "start": "vite --host 0.0.0.0 --strictPort",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.0"
+  },
+  "devDependencies": {
+    "vite": "^7.1.7"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
